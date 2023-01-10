@@ -1,4 +1,4 @@
-from p_automation.pages.abstract_page import AbstractPage
+from pages.abstract_page import AbstractPage
 
 
 class GitHubHomePage(AbstractPage):

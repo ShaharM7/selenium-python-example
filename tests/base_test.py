@@ -3,9 +3,8 @@ from containers import Container
 
 class BaseTest(object):
 
-    def setUp(self):
+    def set_up(self):
         container = Container()
-        chrome_browser = container.chrome_browser
 
     def tearDown(self):
         pass

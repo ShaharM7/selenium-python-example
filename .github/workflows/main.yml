@@ -1,0 +1,37 @@
+name: Selenium test with .NET 6 and Chrome on Ubuntu
+
+on: [ push ]
+
+jobs:
+  selenium_test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: BrowserStack Env Setup
+        uses: browserstack/github-actions/setup-env@master
+        with:
+          username: ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      - name: BrowserStack Local Tunnel Setup
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: start
+          local-identifier: random
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+      - name: Install dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Run tests
+        run: |
+          source venv/bin/activate
+          pytest tests
+      - name: BrowserStackLocal Stop
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: stop

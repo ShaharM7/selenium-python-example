@@ -1,12 +1,13 @@
 from dependency_injector import containers, providers
 
-from p_automation.drivers import chrome_browser, remote_browser
-from p_automation.drivers.awaiter import Awaiter
-from p_automation.drivers.chrome_browser import ChromeBrowser
-from p_automation.drivers.options.browser_options import BrowserOptions
-from p_automation.drivers.remote_browser import RemoteBrowser
-from p_automation.navigation.page_navigator import PageNavigator
-from p_automation.pages.github_home_page import GitHubHomePage
+from drivers import chrome_browser
+from drivers import remote_browser
+from drivers import Awaiter
+from drivers.chrome_browser import ChromeBrowser
+from drivers.options.browser_options import BrowserOptions
+from drivers import RemoteBrowser
+from navigation.page_navigator import PageNavigator
+from pages import GitHubHomePage
 
 
 class Container(containers.DeclarativeContainer):

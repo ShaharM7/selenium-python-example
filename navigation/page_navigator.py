@@ -1,4 +1,4 @@
-from p_automation.pages.github_home_page import GitHubHomePage
+from pages.github_home_page import GitHubHomePage
 
 
 class PageNavigator(object):
