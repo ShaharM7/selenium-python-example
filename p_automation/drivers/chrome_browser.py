@@ -1,9 +1,6 @@
-from webdriver_manager.driver import ChromeDriver
-
-from p_automation.drivers.options.browser_options import BrowserOptions
+from selenium import webdriver
 
 
-class ChromeBrowser(ChromeDriver):
-    def __int__(self, chrome_options: BrowserOptions, config):
-        super.__init__(chrome_options)
-        self.config = config
+class ChromeBrowser(webdriver.Chrome):
+    def __init__(self, options):
+        super().__init__(chrome_options=options)
