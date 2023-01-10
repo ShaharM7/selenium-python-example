@@ -9,7 +9,6 @@ class BasePage(object):
     def __init__(self, driver: WebDriver, web_driver_wait: WebDriverWait):
         self.driver = driver
         self.webDriverWait = web_driver_wait
-        self.timeout = 30
 
     def find_element(self, *locator):
         return self.driver.find_element(*locator)

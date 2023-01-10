@@ -1,9 +1,10 @@
+from containers import Container
 
 
 class BaseTest(object):
 
     def setUp(self):
-        pass
+        container = Container()
 
     def tearDown(self):
         pass
