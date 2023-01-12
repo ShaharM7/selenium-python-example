@@ -1,5 +1,5 @@
 .idea/*
 *__pycache__*
 .idea
-.pytest_cache
+.pytest_cach
 

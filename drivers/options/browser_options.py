@@ -1,13 +1,18 @@
+import os
+
 from selenium.webdriver.chrome.options import Options
 
 
 class BrowserOptions(Options):
-    def __init__(self, config):
+    def __init__(self):
         super().__init__()
-        for argument in config.browser_options_config.arguments:
+
+        for argument in os.getenv('BROWSER_OPTIONS_CONFIG_ARGUMENTS'):
             self.add_argument(argument)
 
-        if config.remote_browser_config.use_selenium_grid:
-            self.set_capability('browserName', config.remote_browser_config.browser_name)
-            self.set_capability('browser_version', config.remote_browser_config.browser_version)
-            self.set_capability('bstack:options', config.remote_browser_config.browser_stack_options)
+        if os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'):
+            self.set_capability('os', os.getenv('REMOTEBROWSER_CONFIG_OS_NAME'))
+            self.set_capability('os_version', os.getenv('REMOTEBROWSER_CONFIG_OS_VERSION'))
+            self.set_capability('browser_name', os.getenv('REMOTEBROWSER_CONFIG_BROWSER_NAME'))
+            self.set_capability('browser_version', os.getenv('REMOTEBROWSER_CONFIG_BROWSER_VERSION'))
+            self.set_capability('bstack:options', '')

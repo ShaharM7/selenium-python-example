@@ -1,16 +1,13 @@
+import os
+
 from pages.github_home_page import GitHubHomePage
 
 
 class PageNavigator(object):
-    browser = None
-
-    def __init__(self, browser, git_hub_home_page, config):
+    def __init__(self, browser, github_home_page: GitHubHomePage):
         self.browser = browser
-        self.git_hub_home_page = git_hub_home_page
+        self.github_home_page = github_home_page
 
-        self.base_url = config.navigation_config.baseurl
-
-    @classmethod
     def navigate_to_home_page(self) -> GitHubHomePage:
-        self.browser.get(self.base_url)
-        return self.git_hub_home_page
+        self.browser.get(os.getenv('NAVIGATION_CONFIG_BASEURL'))
+        return self.github_home_page
