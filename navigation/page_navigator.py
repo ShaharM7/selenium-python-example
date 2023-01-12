@@ -1,6 +1,8 @@
 import os
 
-from pages.github_home_page import GitHubHomePage
+import importlib
+GitHubHomePage = importlib.import_module("pages.github_home_page").GitHubHomePage
+
 
 
 class PageNavigator(object):

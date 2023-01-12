@@ -1,9 +1,9 @@
 import abc
 
-from ..drivers.awaiter import Awaiter
+from drivers.awaiter import Awaiter
 
 
-class AbstractPage(metaclass=abc.ABC):
+class AbstractPage(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def __init__(self, browser, awaiter: Awaiter):
         self.browser = browser
