@@ -1,4 +1,5 @@
 import os
+from distutils.util import strtobool
 
 from selenium.webdriver.chrome.options import Options
 
@@ -7,11 +8,12 @@ class BrowserOptions(Options):
     def __init__(self):
         super().__init__()
 
-        # arguments = os.environ.get("BROWSER_OPTIONS_CONFIG_ARGUMENTS")
-        # for argument in arguments:
-        #     self.add_argument(argument)
+        arguments = os.environ.get("BROWSER_OPTIONS_CONFIG_ARGUMENTS").split(",")
+        for argument in arguments:
+            self.add_argument(argument)
 
-        if os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'):
+        use_selenium_grid = bool(strtobool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID')))
+        if use_selenium_grid:
             self.set_capability('os', os.getenv('REMOTEBROWSER_CONFIG_OS_NAME'))
             self.set_capability('os_version', os.getenv('REMOTEBROWSER_CONFIG_OS_VERSION'))
             self.set_capability('browser_name', os.getenv('REMOTEBROWSER_CONFIG_BROWSER_NAME'))

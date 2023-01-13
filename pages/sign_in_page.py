@@ -13,15 +13,13 @@ SIGN_IN_BUTTON_NAME = 'commit'
 
 class SignInPage(AbstractPage):
     def __init__(self, browser, awaiter: Awaiter):
-        super.__init__(browser, awaiter)
-        self.browser = browser
-        self.awaiter = awaiter
+        super().__init__(browser, awaiter)
 
     def enter_user_name(self, user_name: str) -> None:
-        self.awaiter.until(EC.element_to_be_clickable(By.ID, USER_NAME_INPUTBOX_ID)).send_keys(user_name)
+        self.awaiter.until(EC.element_to_be_clickable((By.ID, USER_NAME_INPUTBOX_ID))).send_keys(user_name)
 
     def enter_password(self, password: str) -> None:
-        self.awaiter.until(EC.element_to_be_clickable(By.ID, PASSWORD_INPUTBOX_ID)).send_keys(password)
+        self.awaiter.until(EC.element_to_be_clickable((By.ID, PASSWORD_INPUTBOX_ID))).send_keys(password)
 
     def click_sign_in(self) -> None:
-        self.awaiter.until(EC.element_to_be_clickable(By.NAME, SIGN_IN_BUTTON_NAME)).click()
+        self.awaiter.until(EC.element_to_be_clickable((By.NAME, SIGN_IN_BUTTON_NAME))).click()
