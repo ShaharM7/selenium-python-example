@@ -29,7 +29,8 @@ def set_up():
                                       awaiter=awaiter,
                                       sign_in_page=sign_in_page)
     page_navigator = PageNavigator(browser=browser,
-                                   github_home_page=github_home_page)
+                                   github_home_page=github_home_page,
+                                   sign_in_page=sign_in_page)
 
     return page_navigator
 
