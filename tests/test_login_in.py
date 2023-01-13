@@ -20,7 +20,7 @@ def set_up():
 
     options = BrowserOptions()
     use_selenium_grid = bool(strtobool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID')))
-    if use_selenium_grid is True:
+    if use_selenium_grid:
         browser = RemoteBrowser(options=options)
     else:
         browser = ChromeBrowser(options=options)
@@ -45,3 +45,4 @@ def test_github_home_page(set_up):
     sign_in_page.enter_user_name("None")
     sign_in_page.enter_password("None-again")
     sign_in_page.click_sign_in()
+
