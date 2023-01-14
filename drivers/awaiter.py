@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class Awaiter(WebDriverWait):
     def __init__(self, browser):
-        super().__init__(browser, timeout=float(os.getenv('AWAITER_CONFIG_TIMEOUT')))
+        super().__init__(browser, timeout=float(os.environ.get('AWAITER_CONFIG_TIMEOUT')))
         self.driver = browser
         self.timeout = float(os.environ.get('AWAITER_CONFIG_TIMEOUT'))
 

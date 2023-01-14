@@ -18,7 +18,7 @@ def set_up():
     load_dotenv('../config/.env')
 
     options = BrowserOptions()
-    use_selenium_grid = str2bool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
+    use_selenium_grid = str2bool(os.environ.get('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
     if use_selenium_grid:
         browser = RemoteBrowser(options=options)
     else:
