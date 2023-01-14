@@ -15,7 +15,7 @@ from pages.sign_in_page import SignInPage
 
 @pytest.fixture
 def set_up():
-    load_dotenv('../.env')
+    load_dotenv('../config/.env')
 
     options = BrowserOptions()
     use_selenium_grid = bool(strtobool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID')))
