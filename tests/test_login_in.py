@@ -1,5 +1,8 @@
 import os
 from distutils.util import strtobool
+import sys
+sys.path.append("../")
+
 
 import pytest
 from dotenv import load_dotenv
