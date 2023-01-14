@@ -23,6 +23,8 @@ def set_up():
         browser = RemoteBrowser(options=options)
     else:
         browser = ChromeBrowser(options=options)
+
+    browser.maximize_window()
     awaiter = Awaiter(browser)
 
     sign_in_page = SignInPage(browser=browser,
