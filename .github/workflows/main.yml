@@ -1,4 +1,4 @@
-name: Selenium test with .NET 6 and Chrome on Ubuntu
+name: Selenium test with Python 3.10 and Chrome on Ubuntu
 
 on: [ push ]
 

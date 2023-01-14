@@ -15,7 +15,6 @@ from pages.sign_in_page import SignInPage
 
 @pytest.fixture
 def set_up():
-
     load_dotenv('../.env')
 
     options = BrowserOptions()
@@ -32,17 +31,19 @@ def set_up():
     github_home_page = GitHubHomePage(browser=browser,
                                       awaiter=awaiter,
                                       sign_in_page=sign_in_page)
+
     page_navigator = PageNavigator(browser=browser,
                                    github_home_page=github_home_page,
                                    sign_in_page=sign_in_page)
+    yield page_navigator
 
-    return page_navigator
+    browser.quit()
 
 
-def test_github_home_page(set_up):
-    home_page = set_up.navigate_to_home_page()
-    sign_in_page = home_page.sign_in()
-    sign_in_page.enter_user_name("None")
-    sign_in_page.enter_password("None-again")
-    sign_in_page.click_sign_in()
-
+class TestLoginInPage:
+    def test_github_home_page(self, set_up):
+        home_page = set_up.navigate_to_home_page()
+        sign_in_page = home_page.sign_in()
+        sign_in_page.enter_user_name("None")
+        sign_in_page.enter_password("None-again")
+        sign_in_page.click_sign_in()
