@@ -17,7 +17,7 @@ from pages.sign_in_page import SignInPage
 def set_up():
     load_dotenv('../config/.env')
 
-    print(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'), "-------------------------------")
+    print(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
     options = BrowserOptions()
     use_selenium_grid = bool(strtobool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID')))
     if use_selenium_grid:
