@@ -2,12 +2,19 @@ import os
 
 from selenium.webdriver.chrome.options import Options
 
+from utils.convert import str2bool
+
 
 class BrowserOptions(Options):
     def __init__(self):
         super().__init__()
 
-        use_selenium_grid = bool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
+        arguments = str(os.getenv("BROWSER_OPTIONS_CONFIG_ARGUMENTS")).split(",")
+        for argument in arguments:
+            print(argument)
+            self.add_argument(str(argument))
+
+        use_selenium_grid = str2bool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
         if use_selenium_grid:
             self.set_capability('bstack:options', {
                 "os": os.getenv('REMOTEBROWSER_CONFIG_OS_NAME'),
@@ -15,7 +22,3 @@ class BrowserOptions(Options):
                 "browserName": os.getenv('REMOTEBROWSER_CONFIG_BROWSER_NAME'),
                 "browserVersion": os.getenv('REMOTEBROWSER_CONFIG_BROWSER_VERSION')
             })
-
-        arguments = os.environ.get("BROWSER_OPTIONS_CONFIG_ARGUMENTS").split(",")
-        for argument in arguments:
-            self.add_argument(argument)

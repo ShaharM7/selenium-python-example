@@ -10,6 +10,7 @@ from drivers.remote_browser import RemoteBrowser
 from navigation.page_navigator import PageNavigator
 from pages.github_home_page import GitHubHomePage
 from pages.sign_in_page import SignInPage
+from utils.convert import str2bool
 
 
 @pytest.fixture
@@ -17,7 +18,7 @@ def set_up():
     load_dotenv('../config/.env')
 
     options = BrowserOptions()
-    use_selenium_grid = bool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
+    use_selenium_grid = str2bool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
     if use_selenium_grid:
         browser = RemoteBrowser(options=options)
     else:
@@ -46,3 +47,4 @@ class TestLoginInPage:
         sign_in_page.enter_user_name("None")
         sign_in_page.enter_password("None-again")
         sign_in_page.click_sign_in()
+        assert "Incorrect username or password.".strip() == sign_in_page.get_error_incorrect_message()
