@@ -15,7 +15,7 @@ from utils.convert import str2bool
 
 @pytest.fixture
 def set_up():
-    load_dotenv('../config/.env')
+    load_dotenv()
 
     options = BrowserOptions()
     use_selenium_grid = str2bool(os.environ.get('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
