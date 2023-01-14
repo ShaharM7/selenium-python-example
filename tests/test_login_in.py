@@ -1,5 +1,4 @@
 import os
-from distutils.util import strtobool
 
 import pytest
 from dotenv import load_dotenv
@@ -18,7 +17,7 @@ def set_up():
     load_dotenv('../config/.env')
 
     options = BrowserOptions()
-    use_selenium_grid = bool(strtobool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID')))
+    use_selenium_grid = bool(os.getenv('REMOTEBROWSER_CONFIG_USE_SELENIUM_GRID'))
     if use_selenium_grid:
         browser = RemoteBrowser(options=options)
     else:
