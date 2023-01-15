@@ -1,0 +1,7 @@
+{
+  "os": "Windows",
+  "os_version": "10",
+  "browser": "Chrome",
+  "browser_version": "latest",
+  "browserstack.local": "false"
+}
